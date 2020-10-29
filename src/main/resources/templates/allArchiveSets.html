@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Archives</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+</head>
+<body>
+	
+	<table>
+
+		<tbody>
+			<th>whereStored</th>
+			<th>whatDocuments</th>
+			<th>whenHandled</th>
+			<th>Company</th>
+			<tr th:each="archiveSet: ${archivesets}">
+
+				<td th:text="${archiveSet.whereStored}"></td>
+				<td th:text="${archiveSet.whatDocuments}"></td>
+				<td th:text="${archiveSet.whenHandled}"></td>
+				<td th:text="${archiveSet.company.companyName}"></td>
+				
+		</tbody>
+	</table>
+	
+
+</body>
+</html>
