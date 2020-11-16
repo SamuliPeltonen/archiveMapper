@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<meta charset="UTF-8">
+<title>Archives</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+</head>
+<body>
+	<form th:object="${archiveset}" th:action="@{../save}" action="#" method="post">
+		<div>
+			<label for="archiveId"></label> <input type="hidden" id="id"
+					th:field="*{archiveId}" />
+		</div>
+		<div>
+			<label for="whereStored">Location: </label>
+			<input type="text" id="whereStored" th:field="${archiveset.whereStored}"/>
+		</div>
+		<div>	
+			<label for="whatDocuments">Contents: </label>
+			<input type="text" id="whatDocuments" th:field="${archiveset.whatDocuments}"/>
+		</div>	
+		<div>
+			<label for="companylist">Company: </label>
+			<select id="companylist" th:field="*{company}" class="form-control">
+			<option th:each="company: ${companies}" th:value="${company.companyId}" th:text="${company.companyName}" class="form-control">
+			</option>
+			</select>
+		</div>
+			
+		<input type="submit" value="Save Record" class="btn btn-primary">
+	</form>
+
+
+</body>
+</html>

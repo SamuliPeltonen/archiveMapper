@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	
+
 	<table>
 
 		<tbody>
@@ -18,16 +18,26 @@
 			<th>whatDocuments</th>
 			<th>whenHandled</th>
 			<th>Company</th>
-			<tr th:each="archiveSet: ${archivesets}">
+			<tr th:each="archiveset: ${archivesets}">
 
-				<td th:text="${archiveSet.whereStored}"></td>
-				<td th:text="${archiveSet.whatDocuments}"></td>
-				<td th:text="${archiveSet.whenHandled}"></td>
-				<td th:text="${archiveSet.company.companyName}"></td>
-				
+				<td th:text="${archiveset.whereStored}"></td>
+				<td th:text="${archiveset.whatDocuments}"></td>
+				<td th:text="${archiveset.whenHandled}"></td>
+				<td th:text="${archiveset.company.companyName}"></td>
+				<td><a
+					th:href="@{/archives/delete/{id}(id=${archiveset.archiveId})}"
+					class="btn btn-danger">Delete</a></td>
+				</td>
 		</tbody>
 	</table>
-	
-
+	<div>
+		<a href="/archives/add" class="btn btn-primary">Add a new
+			archiveset</a>
+	</div>
+	<div>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-danger" />
+		</form>
+	</div>
 </body>
 </html>
