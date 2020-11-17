@@ -11,18 +11,21 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<form th:object="${archiveset}" th:action="@{/savenew}" action="#"
+	<form th:object="${archiveset}" th:action="@{/saveedit}" action="#"
 		method="post">
+		<div>
+			<label for="archiveId"></label> <input type="hidden" id="id"
+				th:field="*{archiveId}" />
+		</div>
 		<div>
 			<label for="whereStored">Location: </label> <input type="text"
 				id="whereStored" th:field="*{whereStored}" />
-			<p th:if="${archiveset.whereStored == ''}">Has to contain 4-10 characters!</p>
-			
+
 		</div>
 		<div>
 			<label for="whatDocuments">Contents: </label> <input type="text"
 				id="whatDocuments" th:field="*{whatDocuments}" />
-				<p th:if="${archiveset.whatDocuments== ''}">Has to contain 4-150 characters!</p>
+
 		</div>
 		<div>
 			<label for="companylist">Company: </label> <select id="companylist"
@@ -37,6 +40,7 @@
 		<a href="https://google.com" class="btn btn-primary">Back to the list of records</a>
 	</form>
 
+	
 
 </body>
 </html>

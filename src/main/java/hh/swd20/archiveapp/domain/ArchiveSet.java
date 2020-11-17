@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -18,8 +20,11 @@ public class ArchiveSet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@NotNull
 	private long archiveId;
+	@Size(min=4, max=10)
 	private String whereStored;
+	@Size(min=4, max=150)
 	private String whatDocuments;
 	private Date whenHandled;
 	
