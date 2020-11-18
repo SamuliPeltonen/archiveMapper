@@ -22,12 +22,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception{
 		http
 			.authorizeRequests()
+			//archivessets and archives can be viewed without logging in.
+			//bad practice in real life especially if some data would be sensitive, but for a demo-project like this, it's good to easily view the data
+			//in this case the data is pseudorandom, not real and serves the purpose for being just a demonstration
 			.antMatchers("/archivesets", "/archives").permitAll()
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()
+			//login-page is found from the endpoint login
 			.loginPage("/login")
 			.permitAll()
+			//on succesful login, redirect to the endpoint below
 			.defaultSuccessUrl("/archives/add", true)
 			.and()
 			.logout()

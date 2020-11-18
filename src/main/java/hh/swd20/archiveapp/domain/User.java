@@ -8,17 +8,23 @@ import javax.persistence.Id;
 
 @Entity
 public class User {
+	//most annotations explained in ArchiveSet-class.
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	//Defining some settings for the columns in the database, id cannot be null, neither can username,password or role
 	@Column(name="id", nullable = false, unique = true)
 	private Long userId;
 	
+	//username and id must be unique, so no duplicate users can be created
 	@Column(name="username", nullable = false, unique = true)
 	private String username;
 	
+	//password can't be unique, that would be a security risk
 	@Column(name="password", nullable = false)
 	private String password;
 	
+	//role is the users role, currently USER or ADMIN
 	@Column(name="role", nullable = false)
 	private String role;
 

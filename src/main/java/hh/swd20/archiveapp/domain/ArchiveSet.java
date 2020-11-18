@@ -22,15 +22,22 @@ public class ArchiveSet {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NotNull
 	private long archiveId;
+	//@size is used for validation purposes, 
 	@Size(min=1, max=30)
+	//whereStored indicates a storing location for the documents, it could be whatever you want,
+	//i.e. "between couch cushions", or something more organized.
 	private String whereStored;
 	@Size(min=1, max=150)
+	//whatDocuments indicates the subject of storage, i.e. "The TV Remote"
 	private String whatDocuments;
+	//whenHandled is the exact time the Entity is created, to differentiate between similar items of the same company
 	private Date whenHandled;
 	
-
+	//relationship between the company-table
 	@ManyToOne
+	//prevents infinite loops in json between ArchiveSet and Company
 	@JsonManagedReference
+	//indicates which column we want to join in the Company table
 	@JoinColumn(name = "companyId")
 	private Company company;
 

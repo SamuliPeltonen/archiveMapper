@@ -25,12 +25,14 @@ public class CompanyController {
 		model.addAttribute("companies", companyRepository.findAll());
 		return "companies";
 	}
-	
+	//adds new (blank) company-object
 	@GetMapping("/archives/addcompany")
 	public String newCompany(Model model) {
 		model.addAttribute("company", new Company());
 		return "newcompany";
 	}
+	//saves the previously blank object with the inputs added to the form
+	//validation functions in the same way as it did in the ArchiveSetController
 	@PostMapping("/savecompany")
 	public String saveCompany(@Valid Company company, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {

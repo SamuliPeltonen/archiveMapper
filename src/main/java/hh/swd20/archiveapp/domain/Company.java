@@ -16,15 +16,18 @@ import com.sun.istack.NotNull;
 
 @Entity
 public class Company {
-
+	//most annotations are explained in the ArchiveSet-class.
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long companyId;
 	@Size(min=1, max=35)
 	private String companyName;
-
+	
+	//indicates a relationship between archiveset, has the opposite annotation to this class.
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
+	//the opposite annotation to @JsonManagedReference, also eliminates the possibility of infinite loops.
 	@JsonBackReference
+	//a list of ArchiveSet-objects that have a relation to the company
 	private List<ArchiveSet> archiveSets;
 
 	// getters and setters
