@@ -87,7 +87,7 @@ public class ArchiveSetController {
 	}
 
 	@GetMapping("update/{id}")
-	@PreAuthorize("hasAuthority('isAuthenticated()')")
+	@PreAuthorize("isAuthenticated()")
 	public String editArchive(@PathVariable("id") Long archiveId, Model model) {
 		model.addAttribute("archiveSet", archiveSetRepository.findById(archiveId));
 		model.addAttribute("companies", companyrepository.findAll());
