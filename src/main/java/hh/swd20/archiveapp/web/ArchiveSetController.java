@@ -38,7 +38,7 @@ public class ArchiveSetController {
 	
 	
 	@GetMapping("/archives/add")
-	@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("isAuthenticated()")
 	public String addArchive(Model model) {
 		ArchiveSet archiveSet = new ArchiveSet();
 		archiveSet.setWhenHandled(new Date(System.currentTimeMillis()));

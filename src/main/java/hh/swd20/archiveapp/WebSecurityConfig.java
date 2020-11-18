@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.formLogin()
 			.loginPage("/login")
 			.permitAll()
-			.defaultSuccessUrl("/archivesets", true)
+			.defaultSuccessUrl("/archives/add", true)
 			.and()
 			.logout()
 			.permitAll();

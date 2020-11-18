@@ -8,7 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.sun.istack.NotNull;
 
 
 @Entity
@@ -17,6 +20,7 @@ public class Company {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long companyId;
+	@Size(min=1, max=35)
 	private String companyName;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "company")

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Archives</title>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+</head>
+<body>
+	<h1>Add Company</h1>
+	<div class="col-md-4">
+
+		<form th:object="${company}" th:action="@{../savecompany}" action="#"
+			method="post">
+			<div>
+				<label for="companyName">Name: </label> <input type="text" id="companyName"
+					th:field="*{companyName}" />
+					<div th:if="${#fields.hasErrors('*')}"><p>Cannot be empty!</p></div>
+			</div>
+			<input type="submit" value="Save" class="btn btn-primary" />
+			<a href="https://fearchivemapper.herokuapp.com/" class="btn btn-primary">Back to the frontpage</a>
+		</form>
+	</div>
+	
+
+</body>
+</html>
