@@ -16,14 +16,18 @@
 		<div>
 			<label for="whereStored">Location: </label> <input type="text"
 				id="whereStored" th:field="*{whereStored}" />
-				<div th:if="${#fields.hasErrors('*')}"><p>Cannot be empty!</p></div>
-			
-			
+			<div th:if="${#fields.hasErrors('*')}">
+				<p>Cannot be empty!</p>
+			</div>
+
+
 		</div>
 		<div>
 			<label for="whatDocuments">Contents: </label> <input type="text"
 				id="whatDocuments" th:field="*{whatDocuments}" />
-				<div th:if="${#fields.hasErrors('*')}"><p>Cannot be empty!</p></div>
+			<div th:if="${#fields.hasErrors('*')}">
+				<p>Cannot be empty!</p>
+			</div>
 		</div>
 		<div>
 			<label for="companylist">Company: </label> <select id="companylist"
@@ -35,7 +39,11 @@
 		</div>
 
 		<input type="submit" value="Save Record" class="btn btn-primary">
-		<a href="https://fearchivemapper.herokuapp.com/" class="btn btn-primary">Back to the list of records</a>
+		<a href="https://fearchivemapper.herokuapp.com/"
+			class="btn btn-primary">Back to the list of records</a>
+	</form>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out" class="btn btn-danger" />
 	</form>
 
 
