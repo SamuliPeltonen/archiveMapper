@@ -11,7 +11,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<form th:object="${archiveset}" th:action="@{/saveedit}" action="#"
+	<form th:object="${archiveSet}" th:action="@{/saveedit}" action="#"
 		method="post">
 		<div>
 			<label for="archiveId"></label> <input type="hidden" id="id"
@@ -20,11 +20,13 @@
 		<div>
 			<label for="whereStored">Location: </label> <input type="text"
 				id="whereStored" th:field="*{whereStored}" />
+				<div th:if="${#fields.hasErrors('*')}"><p>Cannot be empty!</p></div>
 
 		</div>
 		<div>
 			<label for="whatDocuments">Contents: </label> <input type="text"
 				id="whatDocuments" th:field="*{whatDocuments}" />
+				<div th:if="${#fields.hasErrors('*')}"><p>Cannot be empty!</p></div>
 
 		</div>
 		<div>

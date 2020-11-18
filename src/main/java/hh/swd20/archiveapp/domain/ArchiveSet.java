@@ -22,9 +22,9 @@ public class ArchiveSet {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NotNull
 	private long archiveId;
-	@Size(min=4, max=10)
+	@Size(min=1, max=30)
 	private String whereStored;
-	@Size(min=4, max=150)
+	@Size(min=1, max=150)
 	private String whatDocuments;
 	private Date whenHandled;
 	

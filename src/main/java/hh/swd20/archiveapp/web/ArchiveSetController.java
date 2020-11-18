@@ -35,13 +35,14 @@ public class ArchiveSetController {
 		model.addAttribute("archivesets", archiveSetRepository.findAll());
 		return "allArchiveSets";
 	}
-
+	
+	
 	@GetMapping("/archives/add")
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String addArchive(Model model) {
 		ArchiveSet archiveSet = new ArchiveSet();
 		archiveSet.setWhenHandled(new Date(System.currentTimeMillis()));
-		model.addAttribute("archiveset", archiveSet);
+		model.addAttribute("archiveSet", archiveSet);
 		model.addAttribute("companies", companyrepository.findAll());
 		return "newarchiveset";
 	}
@@ -49,7 +50,7 @@ public class ArchiveSetController {
 	@PostMapping("/savenew")
 	public String saveArchive(@Valid ArchiveSet archiveSet, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("archiveset", archiveSet);
+			model.addAttribute("archiveSet", archiveSet);
 			model.addAttribute("companies", companyrepository.findAll());
 
 			return "newarchiveset";
@@ -68,8 +69,7 @@ public class ArchiveSetController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("archiveset", archiveSet);
 			model.addAttribute("companies", companyrepository.findAll());
-
-			return "redirect:/update/" + archiveSet.getArchiveId();
+			return "editArchiveset";
 		} else {
 			if (archiveSet.getWhenHandled() == null) {
 				archiveSet.setWhenHandled(new Date(System.currentTimeMillis()));
@@ -89,7 +89,7 @@ public class ArchiveSetController {
 	@GetMapping("update/{id}")
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String editArchive(@PathVariable("id") Long archiveId, Model model) {
-		model.addAttribute("archiveset", archiveSetRepository.findById(archiveId));
+		model.addAttribute("archiveSet", archiveSetRepository.findById(archiveId));
 		model.addAttribute("companies", companyrepository.findAll());
 		return "editArchiveset";
 	}
