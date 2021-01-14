@@ -17,6 +17,9 @@
 	<div th:if="${param.error}">Invalid username or password.</div>
 	<form th:action="@{/login}" method="post">
 		<div>
+		<p>Hey there, to test adding the records, try logging with credentials user/user</p>
+		</div>
+		<div>
 			<label>Username: <input type="text" name="username" /></label>
 		</div>
 		<div>
